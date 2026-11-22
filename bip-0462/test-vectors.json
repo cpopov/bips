@@ -4,9 +4,26 @@
  "mainnet_params": {
   "rate_period": 2016,
   "target_rate_num": 3,
-  "target_rate_den": 52560000,
-  "fee_pool_divisor": 1000
+  "target_rate_den": 52560000
  },
+ "covered": [
+  {
+   "period_start": 1048320,
+   "covered": 630000000000
+  },
+  {
+   "period_start": 1050336,
+   "covered": 577500000000
+  },
+  {
+   "period_start": 1052352,
+   "covered": 315000000000
+  },
+  {
+   "period_start": 13440000,
+   "covered": 0
+  }
+ ],
  "rate": [
   {
    "comment": "empty UTXO set",
@@ -33,19 +50,19 @@
    "rate": 0
   },
   {
-   "comment": "2032-2036 subsidy (0.78125 BTC/block) plus ~1,000 BTC/year of fees",
+   "comment": "2032-2036 subsidy (0.78125 BTC/block)",
    "utxo_value": 2000000000000000,
-   "covered": 161335616438,
-   "rate": 17063831811
+   "covered": 157500000000,
+   "rate": 18015125570
   },
   {
-   "comment": "no subsidy, ~1,000 BTC/year of fees",
+   "comment": "a period spanning the 2032 halving",
    "utxo_value": 2000000000000000,
-   "covered": 3835616438,
-   "rate": 56126331811
+   "covered": 577500000000,
+   "rate": 0
   },
   {
-   "comment": "nothing covered: rate equals the target rate",
+   "comment": "no subsidy: rate equals the target rate",
    "utxo_value": 2000000000000000,
    "covered": 0,
    "rate": 57077625570
@@ -57,7 +74,7 @@
    "rate": 0
   },
   {
-   "comment": "maximum UTXO set value, nothing covered",
+   "comment": "maximum UTXO set value, no subsidy",
    "utxo_value": 2100000000000000,
    "covered": 0,
    "rate": 57077625570
@@ -247,255 +264,207 @@
    "dividend": 1
   }
  ],
- "fee_pool": {
-  "fee_pool_divisor": 1000,
-  "blocks": [
-   {
-    "fees": 10000000000,
-    "payout": 0,
-    "pool": 10000000000
-   },
-   {
-    "fees": 0,
-    "payout": 10000000,
-    "pool": 9990000000
-   },
-   {
-    "fees": 0,
-    "payout": 9990000,
-    "pool": 9980010000
-   },
-   {
-    "fees": 500000000,
-    "payout": 9980010,
-    "pool": 10470029990
-   },
-   {
-    "fees": 0,
-    "payout": 10470029,
-    "pool": 10459559961
-   },
-   {
-    "fees": 1,
-    "payout": 10459559,
-    "pool": 10449100403
-   },
-   {
-    "fees": 0,
-    "payout": 10449100,
-    "pool": 10438651303
-   },
-   {
-    "fees": 999,
-    "payout": 10438651,
-    "pool": 10428213651
-   },
-   {
-    "fees": 1000,
-    "payout": 10428213,
-    "pool": 10417786438
-   },
-   {
-    "fees": 0,
-    "payout": 10417786,
-    "pool": 10407368652
-   }
-  ]
- },
  "chain": {
   "params": {
    "activation_height": 8,
    "rate_period": 4,
    "target_rate_num": 1,
    "target_rate_den": 20,
-   "fee_pool_divisor": 10,
    "halving_interval": 4
   },
   "initial": {
-   "utxo_value": 1000000000000,
-   "period_subsidy": 10000000000,
-   "period_fees": 300000000
+   "utxo_value": 1000000000000
   },
   "blocks": [
    {
     "height": 8,
     "subsidy": 1250000000,
-    "fees": 0,
     "rate_period_start": true,
-    "rate": 47425000000000000,
-    "index": 952575000000000000,
-    "dividend": 47425000000,
-    "pool_payout": 0,
-    "coinbase_limit": 48675000000,
-    "pool": 0,
-    "utxo_value": 1001249999999,
-    "period_subsidy": 1250000000,
-    "period_fees": 0
+    "covered": 10000000000,
+    "rate": 47500000000000000,
+    "index": 952500000000000000,
+    "dividend": 47500000000,
+    "txs": [],
+    "fees": 0,
+    "coinbase_limit": 48750000000,
+    "utxo_value": 1001249999999
    },
    {
     "height": 9,
     "subsidy": 1250000000,
-    "fees": 200000000,
     "rate_period_start": false,
-    "rate": 47425000000000000,
-    "index": 907399130625000000,
-    "dividend": 47484281249,
-    "pool_payout": 0,
-    "coinbase_limit": 48734281249,
-    "pool": 200000000,
-    "utxo_value": 1002299999999,
-    "period_subsidy": 2500000000,
-    "period_fees": 200000000
+    "covered": 0,
+    "rate": 47500000000000000,
+    "index": 907256250000000000,
+    "dividend": 47559374999,
+    "txs": [
+     {
+      "value": 200000000,
+      "ref_height": 5,
+      "fee_effective": 181451250
+     }
+    ],
+    "fees": 181451250,
+    "coinbase_limit": 48990826249,
+    "utxo_value": 1002499999998
    },
    {
     "height": 10,
     "subsidy": 1250000000,
-    "fees": 0,
     "rate_period_start": false,
-    "rate": 47425000000000000,
-    "index": 864365726855109375,
-    "dividend": 47534077499,
-    "pool_payout": 20000000,
-    "coinbase_limit": 48804077499,
-    "pool": 180000000,
-    "utxo_value": 1003569999998,
-    "period_subsidy": 3750000000,
-    "period_fees": 200000000
+    "covered": 0,
+    "rate": 47500000000000000,
+    "index": 864161578125000000,
+    "dividend": 47618749999,
+    "txs": [],
+    "fees": 0,
+    "coinbase_limit": 48868749999,
+    "utxo_value": 1003749999998
    },
    {
     "height": 11,
     "subsidy": 1250000000,
-    "fees": 0,
     "rate_period_start": false,
-    "rate": 47425000000000000,
-    "index": 823373182259005812,
-    "dividend": 47594307249,
-    "pool_payout": 18000000,
-    "coinbase_limit": 48862307249,
-    "pool": 162000000,
-    "utxo_value": 1004837999997,
-    "period_subsidy": 5000000000,
-    "period_fees": 200000000
+    "covered": 0,
+    "rate": 47500000000000000,
+    "index": 823113903164062500,
+    "dividend": 47678124999,
+    "txs": [],
+    "fees": 0,
+    "coinbase_limit": 48928124999,
+    "utxo_value": 1004999999997
    },
    {
     "height": 12,
     "subsidy": 625000000,
-    "fees": 1000000000,
     "rate_period_start": true,
-    "rate": 48706259118281871,
-    "index": 783269754692854349,
-    "dividend": 48941899999,
-    "pool_payout": 16200000,
-    "coinbase_limit": 49583099999,
-    "pool": 1145800000,
-    "utxo_value": 1004479199996,
-    "period_subsidy": 625000000,
-    "period_fees": 1000000000
+    "covered": 5000000000,
+    "rate": 48756218905369421,
+    "index": 782981981517342421,
+    "dividend": 48999999999,
+    "txs": [
+     {
+      "value": 1000000000,
+      "ref_height": 5,
+      "fee_effective": 782981981
+     },
+     {
+      "value": 1,
+      "ref_height": 5,
+      "fee_effective": 0
+     }
+    ],
+    "fees": 782981981,
+    "coinbase_limit": 50407981980,
+    "utxo_value": 1005624999995
    },
    {
     "height": 13,
     "subsidy": 625000000,
-    "fees": 1,
     "rate_period_start": false,
-    "rate": 48706259118281871,
-    "index": 745119615061271107,
-    "dividend": 48924424193,
-    "pool_payout": 114580000,
-    "coinbase_limit": 49664004193,
-    "pool": 1031220001,
-    "utxo_value": 1005218779994,
-    "period_subsidy": 1250000000,
-    "period_fees": 1000000001
+    "covered": 0,
+    "rate": 48756218905369421,
+    "index": 744806740627522959,
+    "dividend": 49030472636,
+    "txs": [
+     {
+      "value": 48990826249,
+      "ref_height": 9,
+      "fee_effective": 40218733813
+     }
+    ],
+    "fees": 40218733813,
+    "coinbase_limit": 89874206449,
+    "utxo_value": 1006249999994
    },
    {
     "height": 14,
     "subsidy": 625000000,
-    "fees": 0,
     "rate_period_start": false,
-    "rate": 48706259118281871,
-    "index": 708827626015982393,
-    "dividend": 48960446368,
-    "pool_payout": 103122000,
-    "coinbase_limit": 49688568368,
-    "pool": 928098001,
-    "utxo_value": 1005946901993,
-    "period_subsidy": 1875000000,
-    "period_fees": 1000000001
+    "covered": 0,
+    "rate": 48756218905369421,
+    "index": 708492780139292745,
+    "dividend": 49060945273,
+    "txs": [],
+    "fees": 0,
+    "coinbase_limit": 49685945273,
+    "utxo_value": 1006874999994
    },
    {
     "height": 15,
     "subsidy": 625000000,
-    "fees": 0,
     "rate_period_start": false,
-    "rate": 48706259118281871,
-    "index": 674303283993051358,
-    "dividend": 48995910467,
-    "pool_payout": 92809800,
-    "coinbase_limit": 49713720267,
-    "pool": 835288201,
-    "utxo_value": 1006664711792,
-    "period_subsidy": 2500000000,
-    "period_fees": 1000000001
+    "covered": 0,
+    "rate": 48756218905369421,
+    "index": 673949351057947619,
+    "dividend": 49091417910,
+    "txs": [],
+    "fees": 0,
+    "coinbase_limit": 49716417910,
+    "utxo_value": 1007499999994
    },
    {
     "height": 16,
     "subsidy": 312500000,
-    "fees": 0,
     "rate_period_start": true,
-    "rate": 49130793013701273,
-    "index": 641174228918729724,
-    "dividend": 49458235589,
-    "pool_payout": 83528820,
-    "coinbase_limit": 49854264409,
-    "pool": 751759381,
-    "utxo_value": 1007060740612,
-    "period_subsidy": 312500000,
-    "period_fees": 0
+    "covered": 2500000000,
+    "rate": 49379652605256851,
+    "index": 640669966229167871,
+    "dividend": 49749999999,
+    "txs": [],
+    "fees": 0,
+    "coinbase_limit": 50062499999,
+    "utxo_value": 1007812499993
    },
    {
     "height": 17,
     "subsidy": 312500000,
-    "fees": 0,
     "rate_period_start": false,
-    "rate": 49130793013701273,
-    "index": 609672830592004096,
-    "dividend": 49477692799,
-    "pool_payout": 75175938,
-    "coinbase_limit": 49865368737,
-    "pool": 676583443,
-    "utxo_value": 1007448416550,
-    "period_subsidy": 625000000,
-    "period_fees": 0
+    "covered": 0,
+    "rate": 49379652605256851,
+    "index": 609033905862149922,
+    "dividend": 49765431140,
+    "txs": [],
+    "fees": 0,
+    "coinbase_limit": 50077931140,
+    "utxo_value": 1008124999992
    },
    {
     "height": 18,
     "subsidy": 312500000,
-    "fees": 50000,
     "rate_period_start": false,
-    "rate": 49130793013701273,
-    "index": 579719120946110981,
-    "dividend": 49496739625,
-    "pool_payout": 67658344,
-    "coinbase_limit": 49876897969,
-    "pool": 608975099,
-    "utxo_value": 1007828524893,
-    "period_subsidy": 937500000,
-    "period_fees": 50000
+    "covered": 0,
+    "rate": 49379652605256851,
+    "index": 578960023165854254,
+    "dividend": 49780862282,
+    "txs": [
+     {
+      "value": 50000,
+      "ref_height": 5,
+      "fee_effective": 28948
+     },
+     {
+      "value": 50407981980,
+      "ref_height": 12,
+      "fee_effective": 37273152005
+     }
+    ],
+    "fees": 37273180953,
+    "coinbase_limit": 87366543235,
+    "utxo_value": 1008437499991
    },
    {
     "height": 19,
     "subsidy": 312500000,
-    "fees": 0,
     "rate_period_start": false,
-    "rate": 49130793013701273,
-    "index": 551237060808822748,
-    "dividend": 49515414649,
-    "pool_payout": 60897509,
-    "coinbase_limit": 49888812158,
-    "pool": 548077590,
-    "utxo_value": 1008201922401,
-    "period_subsidy": 1250000000,
-    "period_fees": 50000
+    "covered": 0,
+    "rate": 49379652605256851,
+    "index": 550371178349592912,
+    "dividend": 49796293423,
+    "txs": [],
+    "fees": 0,
+    "coinbase_limit": 50108793423,
+    "utxo_value": 1008749999990
    }
   ]
  },
@@ -529,12 +498,12 @@
     "ref_height": 50,
     "value": 100000000
    },
-   "v4": {
+   "inherited": {
     "height": 102,
     "ref_height": 100,
     "value": 50000000
    },
-   "legacy": {
+   "coinbase": {
     "height": 102,
     "ref_height": 102,
     "value": 20000000
@@ -542,178 +511,95 @@
   },
   "cases": [
    {
-    "comment": "legacy spend of a pre-activation output, valued at the inclusion height",
+    "comment": "pre-activation output alone: index 1, valued at its nominal value",
     "spend_height": 103,
-    "ref_height": null,
     "inputs": [
      "pre"
     ],
-    "value_out": 99998977,
+    "value_out": 99999000,
     "valid": true,
     "reason": "",
+    "ref_height": 50,
     "fee": 1000
    },
    {
-    "comment": "version 4 spend of all three, valued at its reference height",
+    "comment": "one input alone is always valued at its nominal value",
     "spend_height": 103,
-    "ref_height": 102,
     "inputs": [
-     "pre",
-     "v4",
-     "legacy"
+     "inherited"
     ],
-    "value_out": 169994976,
+    "value_out": 49995000,
     "valid": true,
     "reason": "",
+    "ref_height": 100,
     "fee": 5000
    },
    {
-    "comment": "reference height equal to the inclusion height",
+    "comment": "mixed inputs: valued at the highest reference height",
     "spend_height": 103,
-    "ref_height": 103,
-    "inputs": [
-     "pre"
-    ],
-    "value_out": 99999976,
-    "valid": true,
-    "reason": "",
-    "fee": 1
-   },
-   {
-    "comment": "rule 2: reference height in the future",
-    "spend_height": 103,
-    "ref_height": 104,
-    "inputs": [
-     "pre"
-    ],
-    "value_out": 99999000,
-    "valid": false,
-    "reason": "bad-txns-refheight-future",
-    "fee": 0
-   },
-   {
-    "comment": "rule 1: reference height below activation",
-    "spend_height": 103,
-    "ref_height": 99,
-    "inputs": [
-     "pre"
-    ],
-    "value_out": 99999000,
-    "valid": false,
-    "reason": "bad-txns-refheight-below-input",
-    "fee": 0
-   },
-   {
-    "comment": "rule 1: reference height below an input's",
-    "spend_height": 103,
-    "ref_height": 101,
-    "inputs": [
-     "legacy"
-    ],
-    "value_out": 19999000,
-    "valid": false,
-    "reason": "bad-txns-refheight-below-input",
-    "fee": 0
-   },
-   {
-    "comment": "rule 1: equal to the input's reference height",
-    "spend_height": 103,
-    "ref_height": 100,
-    "inputs": [
-     "v4"
-    ],
-    "value_out": 50000000,
-    "valid": true,
-    "reason": "",
-    "fee": 0
-   },
-   {
-    "comment": "rule 5: outputs exceed inputs at the reference height",
-    "spend_height": 103,
-    "ref_height": 102,
     "inputs": [
      "pre",
-     "v4"
+     "coinbase"
     ],
-    "value_out": 149999977,
-    "valid": false,
-    "reason": "bad-txns-in-belowout",
-    "fee": 0
+    "value_out": 119998982,
+    "valid": true,
+    "reason": "",
+    "ref_height": 102,
+    "fee": 1000
    },
    {
-    "comment": "legacy spend paying the nominal value",
+    "comment": "all three inputs",
     "spend_height": 103,
-    "ref_height": null,
     "inputs": [
-     "pre"
+     "pre",
+     "inherited",
+     "coinbase"
     ],
-    "value_out": 100000000,
+    "value_out": 169997476,
+    "valid": true,
+    "reason": "",
+    "ref_height": 102,
+    "fee": 2500
+   },
+   {
+    "comment": "outputs one satoshi above the inputs at the reference height",
+    "spend_height": 103,
+    "inputs": [
+     "pre",
+     "coinbase"
+    ],
+    "value_out": 119999983,
     "valid": false,
     "reason": "bad-txns-in-belowout",
+    "ref_height": 102,
     "fee": 0
-   }
-  ]
- },
- "transaction": {
-  "hex": "0400000000030211110000000000000000000000000000000000000000000000000000000000000000000000fdffffff22220000000000000000000000000000000000000000000000000000000000000300000000ffffffff0200286bee00000000015100e9a435000000002321021111111111111111111111111111111111111111111111111111111111111111ac0001400101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010140420f0087d61200",
-  "txid": "30088a52d9c4322ded79768951c85caa56f6f1bbc2ba7f7395be4b21950b9872",
-  "wtxid": "7404151398050590b00938b0ed2b935ad8f33b7ebc42274432b84655d09e594b",
-  "hex_no_witness": "0400000000020211110000000000000000000000000000000000000000000000000000000000000000000000fdffffff22220000000000000000000000000000000000000000000000000000000000000300000000ffffffff0200286bee00000000015100e9a435000000002321021111111111111111111111111111111111111111111111111111111111111111ac40420f0087d61200",
-  "txid_no_witness": "30088a52d9c4322ded79768951c85caa56f6f1bbc2ba7f7395be4b21950b9872",
-  "wtxid_no_witness": "30088a52d9c4322ded79768951c85caa56f6f1bbc2ba7f7395be4b21950b9872",
-  "ref_height": 1234567,
-  "spent_outputs": [
-   {
-    "value": 3000000000,
-    "script_pubkey": "51"
    },
    {
-    "value": 2000000000,
-    "script_pubkey": "51203333333333333333333333333333333333333333333333333333333333333333"
-   }
-  ],
-  "sighashes": [
-   {
-    "sigversion": "base",
-    "input": 0,
-    "hash_type": 1,
-    "script_code": "21022222222222222222222222222222222222222222222222222222222222222222ac",
-    "sighash": "e5dea90667c27d03dd6357c7d2aa2349deaaf36851f89d421d86d170519cf4d7"
+    "comment": "outputs at the nominal sum of decayed inputs",
+    "spend_height": 103,
+    "inputs": [
+     "pre",
+     "inherited",
+     "coinbase"
+    ],
+    "value_out": 170000000,
+    "valid": false,
+    "reason": "bad-txns-in-belowout",
+    "ref_height": 102,
+    "fee": 0
    },
    {
-    "sigversion": "witness_v0",
-    "input": 0,
-    "hash_type": 1,
-    "script_code": "21022222222222222222222222222222222222222222222222222222222222222222ac",
-    "amount": 3000000000,
-    "sighash": "f27aa9d5ec934bb9a5d85f148f15cc8bea94a1f09995948f88d7c6adc17f56c9"
-   },
-   {
-    "sigversion": "base",
-    "input": 0,
-    "hash_type": 131,
-    "script_code": "21022222222222222222222222222222222222222222222222222222222222222222ac",
-    "sighash": "d48ac6973dc1f4709acd0ee8584c375d938bf4c021d8a6a4ec7b9e4c7e5d0088"
-   },
-   {
-    "sigversion": "witness_v0",
-    "input": 0,
-    "hash_type": 131,
-    "script_code": "21022222222222222222222222222222222222222222222222222222222222222222ac",
-    "amount": 3000000000,
-    "sighash": "487aaa49b708a9ef9a320a793776f5103e42776bda9a74f2bfe53d6d0bece278"
-   },
-   {
-    "sigversion": "taproot",
-    "input": 1,
-    "hash_type": 0,
-    "sighash": "69d73ba244e18ef11dc00f104a471d3db04c10171ddd56a158720ae6029e4fb8"
-   },
-   {
-    "sigversion": "taproot",
-    "input": 1,
-    "hash_type": 129,
-    "sighash": "89ed591f0cf3ba0873d9dfaf1e6453aed67153adc5836b706b2ff45a7e5f7789"
+    "comment": "zero fee",
+    "spend_height": 103,
+    "inputs": [
+     "inherited",
+     "coinbase"
+    ],
+    "value_out": 69999994,
+    "valid": true,
+    "reason": "",
+    "ref_height": 102,
+    "fee": 0
    }
   ]
  }
